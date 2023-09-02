@@ -23,6 +23,10 @@ const dados = {
 
 router.use(express.json());
 
+router.get('/', (_req, res) => {
+  res.redirect('/produtos');
+});
+
 router.get('/produtos', (_req, res) => {
   res.json(dados.produtos);
 });
