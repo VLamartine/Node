@@ -28,7 +28,7 @@ router.get('/produtos', (_req, res) => {
 });
 
 router.get('/produtos/:id', (req, res) => {
-  res.json(dados.produtos.find((p) => p.id === req.params.id));
+  res.json(dados.produtos.find((p) => p.id === +req.params.id));
 });
 
 router.post('/produtos', (req, res) => {
@@ -41,7 +41,7 @@ router.post('/produtos', (req, res) => {
 });
 
 router.put('/produtos/:id', (req, res) => {
-  const oldProduct = dados.produtos.findIndex((p) => p.id === req.params.id);
+  const oldProduct = dados.produtos.findIndex((p) => p.id === +req.params.id);
   dados.produtos[oldProduct] = {
     ...dados.produtos[oldProduct],
     ...req.body,
@@ -52,7 +52,7 @@ router.put('/produtos/:id', (req, res) => {
 });
 
 router.delete('/produtos/:id', (req, res) => {
-  const oldProduct = dados.produtos.findIndex((p) => p.id === req.params.id);
+  const oldProduct = dados.produtos.findIndex((p) => p.id === +req.params.id);
 
   dados.produtos.splice(oldProduct, 1);
   res.status(204).send();
